@@ -15,8 +15,8 @@ by Matthew Pickering
 - [ ] Traversal
 - [ ] Modular Optics
     - [X] Cartesian
-    - [ ] CoCartesian
-    - [ ] Monoidal
+    - [X] CoCartesian
+    - [X] Monoidal
     - [X] Optic
-    - [X ] AdapterP
+    - [X] AdapterP
     - [ ] Laws (Tests)
