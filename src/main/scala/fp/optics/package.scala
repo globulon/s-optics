@@ -1,3 +1,3 @@
 package fp
 
-package object optics extends Optics
+package object optics extends Denotations
