@@ -1,8 +1,9 @@
 # Profunctor Optics
 
-From Modular Data Accessors
-Matthew Pickeringa
-, Jeremy Gibbonsb
+From [`Profunctor Optics Modular Data Accessors`](https://www.cs.ox.ac.uk/people/jeremy.gibbons/publications/poptics.pdf)
+
+by Matthew Pickering
+, Jeremy Gibbons
 , and Nicolas Wu
 
 
@@ -10,11 +11,12 @@ Matthew Pickeringa
     - [ ] Lens 
     - [ ] Prism
     - [ ] Adapter
+    - [ ] Laws (Tests)
 - [ ] Traversal
 - [ ] Modular Optics
-    - [ ] Cartesian
+    - [X] Cartesian
     - [ ] CoCartesian
     - [ ] Monoidal
-    - [ ] Optic
-    - [ ] AdapterP
-
+    - [X] Optic
+    - [X ] AdapterP
+    - [ ] Laws (Tests)
