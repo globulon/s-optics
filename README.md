@@ -8,9 +8,10 @@ by Matthew Pickering
 
 
 - [ ] Simple Optics 
-    - [ ] Lens 
-    - [ ] Prism
-    - [ ] Adapter
+    - [X] Lens 
+    - [X] Prism
+    - [X] Adapter
+    - [X] Traversal
     - [ ] Laws (Tests)
 - [ ] Traversal
 - [ ] Modular Optics
