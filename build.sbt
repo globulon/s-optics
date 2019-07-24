@@ -60,14 +60,14 @@ lazy val commonSettings = Seq(
   ),
 
   libraryDependencies ++= Seq(
-    "org.scalactic" %% "scalactic" % "3.0.5",
-    "org.scalatest" %% "scalatest" % "3.0.5" % Test
+    "org.scalactic" %% "scalactic" % "3.0.8" % Test,
+    "org.scalatest" %% "scalatest" % "3.0.8" % Test
   ) map (_ withSources),
 
   fork in Test := true,
 
-  addCompilerPlugin("org.spire-math" %% "kind-projector" % "0.9.10"),
-  addCompilerPlugin("com.olegpy" %% "better-monadic-for" % "0.3.0"),
+  addCompilerPlugin("org.typelevel" %% "kind-projector" % "0.10.3"),
+  addCompilerPlugin("com.olegpy" %% "better-monadic-for" % "0.3.1"),
 
 
   resolvers ++= Seq(
@@ -90,8 +90,7 @@ val catsVersion =  "2.0.0-M4"
 lazy val catsSettings = Seq(
   libraryDependencies ++= Seq(
     "org.typelevel" %% "cats-core" % catsVersion,
-    "org.typelevel" %% "cats-testkit" % catsVersion % Test,
-    "org.scalatest" %% "scalatest" % "3.0.5" % Test
+    "org.typelevel" %% "cats-testkit" % catsVersion % Test
    ) map {
     _ withSources() withJavadoc()
   }
