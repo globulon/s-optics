@@ -1,5 +1,12 @@
 import scala.language.postfixOps
 
+
+lazy val versions = new {
+  def cats = "2.0.0-M4"
+  def scalatest = "3.0.8"
+  def kindProjector = "0.10.3"
+}
+
 name := "s-optics"
 version := "0.0.1-SNAPSHOT"
 
@@ -60,14 +67,14 @@ lazy val commonSettings = Seq(
   ),
 
   libraryDependencies ++= Seq(
-    "org.scalactic" %% "scalactic" % "3.0.8" % Test,
-    "org.scalatest" %% "scalatest" % "3.0.8" % Test
+    "org.scalactic" %% "scalactic" % versions.scalatest % Test,
+    "org.scalatest" %% "scalatest" % versions.scalatest % Test
   ) map (_ withSources),
 
   fork in Test := true,
 
-  addCompilerPlugin("org.typelevel" %% "kind-projector" % "0.10.3"),
-  addCompilerPlugin("com.olegpy" %% "better-monadic-for" % "0.3.1"),
+  addCompilerPlugin("org.typelevel" %% "kind-projector" % versions.kindProjector),
+//  addCompilerPlugin("com.olegpy" %% "better-monadic-for" % "0.3.1"),
 
 
   resolvers ++= Seq(
@@ -85,16 +92,27 @@ lazy val coverageSettings = Seq(
   //  coverageFailOnMinimum := true
 )
 
-val catsVersion =  "2.0.0-M4"
-
 lazy val catsSettings = Seq(
   libraryDependencies ++= Seq(
-    "org.typelevel" %% "cats-core" % catsVersion,
-    "org.typelevel" %% "cats-testkit" % catsVersion % Test
+    "org.typelevel" %% "cats-core" % versions.cats,
+    "org.typelevel" %% "cats-testkit" % versions.cats % Test
    ) map {
     _ withSources() withJavadoc()
   }
 )
 
+lazy val consoleSettings = Seq (
+  initialCommands in console :=
+    """
+      |import fp.optics._
+      |import fp.optics.interops._
+      |import fp.optics.syntax.lens._
+      |import fp.optics.syntax.prism._
+      |import fp.optics.instances.option._
+      |import fp.optics.instances.product._
+      |import fp.optics.instances.funlist._
+    """.stripMargin
+)
+
 lazy val root = (project in file("."))
-  .settings(commonSettings ++ catsSettings ++ coverageSettings)
+  .settings(commonSettings ++ catsSettings ++ coverageSettings ++ consoleSettings)
