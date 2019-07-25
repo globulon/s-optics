@@ -8,4 +8,6 @@ private[syntax] trait Prims {
 
     override def build: B ⇒ T = b
   }
+
+  final def lensP[P[_, _] : Cartesian, A, B, S, T](f: P[A, B] ⇒ P[S, T]): Optic[P, A, B, S, T] = optics(f)
 }
