@@ -5,7 +5,7 @@ import fp.optics.syntax.either._
 import fp.optics.syntax.prism._
 
 private[data] trait PrismInstances {
-  implicit final def prismProfunctor[A, B]: CoCartesian[Prism[A, B, ?,?]] = new CoCartesian[Prism[A, B, ?,?]] {
+  implicit final def prismCoCartesian[A, B]: CoCartesian[Prism[A, B, ?,?]] = new CoCartesian[Prism[A, B, ?,?]] {
     override def dimap[S, T, U, V](fab: Prism[A, B, S, T])(f: U ⇒ S)(g: T ⇒ V): Prism[A, B, U, V] =
       prism( plus(g)(identity[A])  compose fab.`match` compose f)(g compose fab.build)
 
