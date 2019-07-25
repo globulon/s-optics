@@ -7,8 +7,7 @@ import cats.syntax.profunctor._
 private[syntax] trait Prims {
   final def prism[A, B, S, T](m: S ⇒ T + A)(b: B ⇒ T): Prism[A, B, S, T] = new Prism[A, B, S, T] {
     override def `match`: S ⇒ T + A = m
-
-    override def build: B ⇒ T = b
+    override def build: B ⇒ T       = b
   }
 
   //prismP p a b s t = ∀ p . CoCartesian p => Optic p a b s t
@@ -18,4 +17,7 @@ private[syntax] trait Prims {
     p ⇒ _.right[C].dimap(p.`match`){
       either.either (identity[C]) (p.build)
     }
+
+  final def prismP2C[A, B, S, T]: Optic[Prism[A, B, ?, ?], A, B, S, T] ⇒ Prism[A, B, S, T] =
+    _.apply(prism[A, B, A, B](Right(_))(identity))
 }

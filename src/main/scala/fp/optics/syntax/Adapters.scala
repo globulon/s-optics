@@ -13,4 +13,7 @@ private[syntax] trait Adapters {
   final def adapterC2P[P[_, _] : Profunctor, A, B, S, T]: Adapter[A, B, S, T] ⇒ Optic[P, A, B, S, T] = {
     case Adapter(from, to) ⇒ _.dimap(from)(to)
   }
+
+  final def adapterP2C[A, B, S, T]: Optic[Adapter[A, B, ?, ?], A, B, S, T] ⇒ Adapter[A, B, S, T] =
+    _.apply(adapter[A, B, A, B](identity)(identity))
 }
