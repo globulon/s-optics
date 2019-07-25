@@ -1,3 +1,3 @@
 package fp.optics
 
-package object data extends PrismInstances
+package object data extends PrismInstances with AdapterIntances
