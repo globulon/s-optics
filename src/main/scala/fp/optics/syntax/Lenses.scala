@@ -9,5 +9,6 @@ private[syntax] trait Lenses {
     override def update: B x S ⇒ T = u
   }
 
+  //prismP p a b s t = ∀ p . CoCartesian p => Optic p a b s t
   final def prismP[P[_, _] : CoCartesian, A, B, S, T](f: P[A, B] ⇒ P[S, T]): Optic[P, A, B, S, T] = optics(f)
 }
