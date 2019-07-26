@@ -1,9 +1,9 @@
 package fp.optics.syntax
 
-import fp.optics._
-import cartesian._
-import product._
 import cats.syntax.profunctor._
+import fp.optics._
+import fp.optics.syntax.cartesian._
+import fp.optics.syntax.product._
 
 private[syntax] trait Lenses {
   final def lens[A, B, S, T](v: S ⇒ A)(u: (B x S) ⇒ T): Lens[A, B, S, T] = Lens[A, B, S, T](v, u)

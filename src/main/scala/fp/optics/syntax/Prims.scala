@@ -1,8 +1,8 @@
 package fp.optics.syntax
 
-import fp.optics._
-import cocartesian._
 import cats.syntax.profunctor._
+import fp.optics._
+import fp.optics.syntax.cocartesian._
 
 private[syntax] trait Prims {
   final def prism[A, B, S, T](m: S ⇒ T + A)(b: B ⇒ T): Prism[A, B, S, T] = Prism[A, B, S, T](m, b)
