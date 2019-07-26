@@ -5,13 +5,13 @@ import fp.optics.syntax.adapter._
 import fp.optics.syntax.lens.lens
 
 private[instances] trait ProductInstances {
-  final implicit def productL[A, B, C]: Lens[A, B, A x C, B x C] = lens[A, B, A x C, B x C] {
+  final def productL[A, B, C]: Lens[A, B, A x C, B x C] = lens[A, B, A x C, B x C] {
     case (a, _) ⇒ a
   } {
     case (aa, (_, c)) ⇒ (aa, c)
   }
 
-  final implicit def productLL[A, B, C, D]: Lens[A, B, A x C x D, B x C x D] = lens[A, B, A x C x D, B x C x D] {
+  final def productLL[A, B, C, D]: Lens[A, B, A x C x D, B x C x D] = lens[A, B, A x C x D, B x C x D] {
     _._1._1
   } {
     case (b, ((_, c), d)) ⇒ ((b, c), d)

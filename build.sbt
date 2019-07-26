@@ -4,6 +4,7 @@ import scala.language.postfixOps
 lazy val versions = new {
   def cats = "2.0.0-M4"
   def scalatest = "3.0.8"
+  def scalacheck = "1.14.0"
   def kindProjector = "0.10.3"
 }
 
@@ -68,7 +69,8 @@ lazy val commonSettings = Seq(
 
   libraryDependencies ++= Seq(
     "org.scalactic" %% "scalactic" % versions.scalatest % Test,
-    "org.scalatest" %% "scalatest" % versions.scalatest % Test
+    "org.scalatest" %% "scalatest" % versions.scalatest % Test,
+    "org.scalacheck" %% "scalacheck" % versions.scalacheck % Test
   ) map (_ withSources),
 
   fork in Test := true,
