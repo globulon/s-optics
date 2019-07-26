@@ -9,6 +9,6 @@ private[instances] trait IntInstances {
     case _ ⇒ false
   } {
     case (true, i) ⇒ math.abs(i)
-    case (_, i) ⇒ -sign.update((true, i))
+    case (_, i) ⇒ -sign.update(true, i)
   }
 }

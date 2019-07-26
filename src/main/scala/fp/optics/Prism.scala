@@ -1,6 +1,3 @@
 package fp.optics
 
-trait Prism[A, B, S, T] {
-  def `match`: S ⇒ T + A
-  def build: B ⇒ T
-}
+final case class Prism[A, B, S, T](`match`: S ⇒ T + A, build: B ⇒ T)

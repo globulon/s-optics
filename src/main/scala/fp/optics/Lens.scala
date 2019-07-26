@@ -1,9 +1,6 @@
 package fp.optics
 
-trait Lens[A, B, S, T] {
-  def view : S ⇒ A
-  def update: B x S ⇒ T
-}
+final case class Lens[A, B, S, T](view : S ⇒ A, update: (B, S) ⇒ T)
 
 
 
