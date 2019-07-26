@@ -6,5 +6,6 @@ package object syntax extends Optics {
   object prism extends Prims
   object adapter extends Adapters
   object cocartesian extends CoCartesianSyntax
+  object cartesian extends CartesianSyntax
   object product extends Products
 }
